@@ -1,0 +1,1 @@
+/home/chancito/.config/i3
