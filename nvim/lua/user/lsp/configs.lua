@@ -11,6 +11,8 @@ lsp_installer.setup({
 	ensure_installed = servers,
 })
 
+require("flutter-tools").setup{} -- use default 
+
 for _, server in pairs(servers) do
 	local opts = {
 		on_attach = require("user.lsp.handlers").on_attach,
