@@ -11,7 +11,10 @@ lsp_installer.setup({
 	ensure_installed = servers,
 })
 
-require("flutter-tools").setup{} -- use default 
+
+-- alternatively you can override the default configs
+require("flutter-tools").setup {}
+  
 
 for _, server in pairs(servers) do
 	local opts = {
