@@ -3,7 +3,7 @@ if not status_ok then
   return
 end
 
-require "user.lsp.configs"
-require("user.lsp.handlers").setup()
-require "user.lsp.null-ls"
+require "chancito.lsp.configs"
+require("chancito.lsp.handlers").setup()
+require "chancito.lsp.null-ls"
 require("flutter-tools").setup{} -- use defaults
