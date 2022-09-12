@@ -81,13 +81,37 @@ local function lsp_keymaps(bufnr)
 end
 
 M.on_attach = function(client, bufnr)
-	-- vim.notify(client.name .. " starting...")
+	-- Enable completion triggered by <C-X><C-O>
+  -- See `:help omnifunc` and `:help ins-completion` for more information.
+  vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+
+  -- Use LSP as the handler for formatexpr.
+  -- See `:help formatexpr` for more information.
+  vim.api.nvim_buf_set_option(0, "formatexpr", "v:lua.vim.lsp.formatexpr()")
+
+  -- Configure key mappings
+  require("config.lsp.keymaps").setup(client, bufnr)
+
+  -- Configure highlighting
+  require("config.lsp.highlighter").setup(client)
+
+  -- Configure formatting
+  require("config.lsp.null-ls.formatters").setup(client, bufnr)
+
+  -- tagfunc
+  if client.server_capabilities.definitionProvider then
+    vim.api.nvim_buf_set_option(bufnr, "tagfunc", "v:lua.vim.lsp.tagfunc")
+  end
+
+  -- Configure for jdtls
+
+  -- vim.notify(client.name .. " starting...")
 	-- TODO: refactor this into a method that checks if string in list
-	if client.name == "tsserver" then
-		client.resolved_capabilities.document_formatting = false
-	end
-	lsp_keymaps(bufnr)
-	lsp_highlight_document(client)
+  --	if client.name == "tsserver" then
+	--	client.resolved_capabilities.document_formatting = false
+  --	end
+  --	lsp_keymaps(bufnr)
+	--lsp_highlight_document(client)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
