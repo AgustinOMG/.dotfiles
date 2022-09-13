@@ -88,15 +88,15 @@ M.on_attach = function(client, bufnr)
   -- Use LSP as the handler for formatexpr.
   -- See `:help formatexpr` for more information.
   vim.api.nvim_buf_set_option(0, "formatexpr", "v:lua.vim.lsp.formatexpr()")
-
+  lsp_keymaps(bufnr)
+	lsp_highlight_document(client)
   -- Configure key mappings
-  require("config.lsp.keymaps").setup(client, bufnr)
 
   -- Configure highlighting
-  require("config.lsp.highlighter").setup(client)
+--  require("config.lsp.highlighter").setup(client)
 
   -- Configure formatting
-  require("config.lsp.null-ls.formatters").setup(client, bufnr)
+  --require("config.lsp.null-ls.formatters").setup(client, bufnr)
 
   -- tagfunc
   if client.server_capabilities.definitionProvider then

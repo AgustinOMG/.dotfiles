@@ -17,7 +17,16 @@ vim.g.maplocalleader = " "
 --   visual_block_mode = "x",
 --   term_mode = "t",
 --   command_mode = "c",
+--HARPOON
 
+-- These functions are stored in harpoon.  A plugn that I am developing
+--nnoremap("<leader>a", function() require("harpoon.mark").add_file() end, silent)
+--nnoremap("<C-e>", function() require("harpoon.ui").toggle_quick_menu() end, silent)
+
+--nnoremap("<C-h>", function() require("harpoon.ui").nav_file(1) end, silent)
+--nnoremap("<C-t>", function() require("harpoon.ui").nav_file(2) end, silent)
+--nnoremap("<C-n>", function() require("harpoon.ui").nav_file(3) end, silent)
+--nnoremap("<C-s>", function() require("harpoon.ui").nav_file(4) end, silent)
 -- Normal --
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
